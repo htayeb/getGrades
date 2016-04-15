@@ -23,7 +23,8 @@ import org.jsoup.select.Elements;
 public class AuthHandler extends AsyncTask<String, Void, String> {
 
     //username and password passed in https POST
-    String userName, passWord;
+    String userName;
+    String passWord;
     //UVic login page
     String URL = "https://www.uvic.ca/cas/login?service=https%3a//www.uvic.ca/BAN2P/banuvic.gzcaslib.P_Service_Ticket%3ftarget=bwskogrd.P_ViewTermGrde";
     String URL2 = "https://www.uvic.ca/BAN2P/bwskogrd.P_ViewTermGrde";
@@ -54,7 +55,7 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
 
             String ltValue = doc.select("input[name=lt]").attr("value");
             String executionValue = doc.select("input[name=execution]").attr("value");
-            Map<String, String> loginCookies = loginForm.cookies();
+
 
             //Https Post with username, password, LT value, execution value,event ID and login cookies
             doc = Jsoup.connect(URL)
@@ -63,7 +64,6 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
                     .data("lt", ltValue)
                     .data("execution", executionValue)
                     .data("_eventId", "submit")
-                    .data("term_in", "201509")
                     .referrer("https://www.uvic.ca/BAN2P/bwskogrd.P_ViewTermGrde")
                     .cookies(loginForm.cookies())
                     .post();
@@ -89,7 +89,7 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
                 //mConfirm = table.size();
 
                 //Log.v("The mconfim", mConfirm);
-                Log.v("String3", doc.toString());
+                //Log.v("String3", doc.toString());
                 result = "proceed";
                 //return doc
             }
