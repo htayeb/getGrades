@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -72,6 +73,7 @@ public class Grades extends Activity {
                                 "document.getElementById('password').value = '"+passWord+"';" +
                                "document.getElementsByName('submit')[1].click();" +
                                 "};");
+                        onPageFinshed2(view, url);
 
                     }
                 }catch(Exception exception){
@@ -83,7 +85,7 @@ public class Grades extends Activity {
             private void onPageFinshed2(WebView view, String url)
             {
                 webView.loadUrl("javascript:document.getElementsByTagName('input')[2].click();");
-                webView.clearFormData();
+                //webView.clearFormData();
 
             }
 
@@ -91,6 +93,7 @@ public class Grades extends Activity {
 
         // Javascript inabled on webview
         webView.getSettings().setJavaScriptEnabled(true);
+        //webView.getSettings().setPluginState(WebSettings.PluginState.ON);
 
         // Other webview options
 	    /*
@@ -135,6 +138,17 @@ public class Grades extends Activity {
             cookieSyncMngr.sync();
         }*/
     //}
+    public static void clearWebViewAbsolutely(WebView webView){
+        webView.clearCache(true);
+        webView.clearHistory();
+        webView.clearView();
+        webView.clearSslPreferences();
+        webView.clearDisappearingChildren();
+        webView.clearFocus();
+        webView.clearFormData();
+        webView.clearMatches();
+    }
+
     @Override
     // Detect when the back button is pressed
     public void onBackPressed() {

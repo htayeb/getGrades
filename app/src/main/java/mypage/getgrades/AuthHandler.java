@@ -42,6 +42,7 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params)
     {
         String result = "null";
+
         try
         {
             //Connect to the UVic login page inorder to parse the login page
@@ -52,25 +53,27 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
 
             //Parse login form to retrieve the unique UVic LT value and execution value
             Document doc = loginForm.parse();
-
+            Log.d("String6", doc.toString());
             String ltValue = doc.select("input[name=lt]").attr("value");
             String executionValue = doc.select("input[name=execution]").attr("value");
 
 
             //Https Post with username, password, LT value, execution value,event ID and login cookies
-            doc = Jsoup.connect(URL)
+            doc = Jsoup.connect(URL2)
                     .data("username", userName)
                     .data("password", passWord)
                     .data("lt", ltValue)
                     .data("execution", executionValue)
                     .data("_eventId", "submit")
-                    .referrer("https://www.uvic.ca/BAN2P/bwskogrd.P_ViewTermGrde")
                     .cookies(loginForm.cookies())
+                    .ignoreHttpErrors(true)
                     .post();
+            int statusCode = loginForm.statusCode();
             //Map<String, String> loginCookies = loginForm.cookies();
             Log.d("String2", doc.toString());
             //String mWelcomeMessage = doc.select("a.glblLnK").html();
             String mWelcomeMessage = doc.title();
+
             if (mWelcomeMessage.equals("Term Grades"))
             {
             //if (mWelcomeMessage.length() >0)
@@ -93,7 +96,13 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
                 result = "proceed";
                 //return doc
             }
-                //Log.v(mWelcomeMessage, doc.toString());}
+                //Log.v(mWelcomeMessage, doc.toString());
+
+            else if (statusCode == 200)
+            {
+                Log.v("WOW", loginForm.statusMessage());
+                result = "serverError";
+            }
             else
             {
                 Log.v("MOOOOOOO", doc.toString());

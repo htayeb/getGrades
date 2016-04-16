@@ -67,6 +67,10 @@ public class MainActivity extends android.app.Activity
                 {
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_LONG).show();
                 }
+                else if (result.contains("serverError"))
+                {
+                    Toast.makeText(getApplicationContext(), "Server temporary overloaded. Please try again later", Toast.LENGTH_LONG).show();
+                }
                 else
                 {
                    Toast.makeText(getApplicationContext(), "Something went wrong! Restart the app!", Toast.LENGTH_SHORT).show();

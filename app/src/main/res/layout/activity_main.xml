@@ -60,4 +60,21 @@
         android:text="login details: \nusername : admin\npassword : password"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:src="@mipmap/logo"
+        android:layout_above="@+id/editText1"
+        android:layout_marginBottom="98dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:baselineAlignBottom="false"
+        />
+
 </RelativeLayout>
