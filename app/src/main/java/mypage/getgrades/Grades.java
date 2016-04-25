@@ -2,162 +2,124 @@ package mypage.getgrades;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 public class Grades extends Activity {
+
 
     //private Button button;
     private WebView webView;
     String userName = "hsa";
     String passWord = "humAm92";
     String mUrl = "https://www.uvic.ca/cas/login?service=https%3a//www.uvic.ca/BAN2P/banuvic.gzcaslib.P_Service_Ticket%3ftarget=bwskogrd.P_ViewTermGrde";
+    boolean loadingFinished = true;
+    boolean redirect = false;
 
-    public void onCreate(Bundle savedInstanceState) {
-
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grades);
-
         //Get webview
         webView = (WebView) findViewById(R.id.webView1);
         webView.loadUrl(mUrl);
         webView.setVisibility(View.INVISIBLE);
-        //webView.clearFormData();
-       // webView.getSettings().setJavaScriptEnabled(true);
-        //webView.getSettings().setJavaScriptEnabled(true);
-
-        //startWebView("http://www.androidexample.com/media/webview/login.html");
-
-
+        startWebView(mUrl);
     }
 
     @SuppressLint("SetJavaScriptEnabled")
-    private void startWebView(String url) {
-
+    private void startWebView(final String url)
+    {
         //Create new webview Client to show progress dialog
         //When opening a url or click on link
+        webView.setWebViewClient(new WebViewClient()
+        {
 
-        webView.setWebViewClient(new WebViewClient() {
             ProgressDialog progressDialog;
 
             //If you will not use this method url links are opeen in new brower not in webview
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            public boolean shouldOverrideUrlLoading(WebView view, String url)
+            {
+                if (!loadingFinished) {
+                    redirect = true;
+                }
+
+                loadingFinished = false;
                 view.loadUrl(url);
-                return false;
+                return true;
             }
 
+
             //Show loader on url load
-            public void onLoadResource (WebView view, String url) {
-                if (progressDialog == null) {
+            public void onLoadResource (WebView view, String url)
+            {
+                if (progressDialog == null)
+                {
                     // in standard case YourActivity.this
                     progressDialog = new ProgressDialog(Grades.this);
                     progressDialog.setMessage("Loading...");
                     progressDialog.show();
                 }
+
             }
+
             public void onPageFinished(WebView view, String url)
             {
-                try{
-
-                    if((progressDialog.isShowing()) &&(userName != null || passWord != null) )
-                    {
-                        progressDialog.dismiss();
-                        progressDialog = null;
+                try {
+                    int imSmart = 0;
+                    if ((progressDialog.isShowing()) && (userName != null || passWord != null)) {
                         webView.loadUrl("javascript: {" +
 
-                                "document.getElementById('username').value = '"+userName+"';" +
-                                "document.getElementById('password').value = '"+passWord+"';" +
-                               "document.getElementsByName('submit')[1].click();" +
+                                "document.getElementById('username').value = '" + userName + "';" +
+                                "document.getElementById('password').value = '" + passWord + "';" +
+                                "document.getElementsByName('submit')[1].click();" +
                                 "};");
-                        onPageFinshed2(view, url);
+                        //onSecondPageFinished(view, url);
+                        //progressDialog.dismiss();
 
+
+                        onSecPageFinished(view, url);
+                        progressDialog.dismiss();
+                        webView.setVisibility(View.VISIBLE);
+                        //webView.loadUrl("javascript:document.getElementsByTagName('input')[2].click();");
+
+                        //String data;
+                        //webView.loadData(data, "text/html", null);
+                        //Parse login form to retrieve the unique UVic LT value and execution value
+                        // Log.d("String88", webUrl);
                     }
-                }catch(Exception exception){
-                    exception.printStackTrace();
                 }
 
+                catch(Exception exception)
+                {
+                    exception.printStackTrace();
+                }
             }
-
-            private void onPageFinshed2(WebView view, String url)
+            private void onSecPageFinished(WebView view, String url)
             {
+                SystemClock.sleep(5000);
                 webView.loadUrl("javascript:document.getElementsByTagName('input')[2].click();");
-                //webView.clearFormData();
-
+                //progressDialog.dismiss();
+                //webView.setVisibility(View.VISIBLE);
+                //webView.loadUrl("javascript:document.getElementsByTagName('html')[0].innerHTML+'</html>';");
+                //webView.setVisibility(View.VISIBLE);
             }
 
         });
 
+
         // Javascript inabled on webview
-        webView.getSettings().setJavaScriptEnabled(true);
-        //webView.getSettings().setPluginState(WebSettings.PluginState.ON);
-
-        // Other webview options
-	    /*
-	    webView.getSettings().setLoadWithOverviewMode(true);
-	    webView.getSettings().setUseWideViewPort(true);
-	    webView.setScrollBarStyle(WebView.SCROLLBARS_OUTSIDE_OVERLAY);
-	    webView.setScrollbarFadingEnabled(false);
-	    webView.getSettings().setBuiltInZoomControls(true);
-	    */
-
-
-	     //String summary = "<html><body>You scored <b>192</b> points.</body></html>";
-         //webView.loadData(summary, "text/html", null);
-
-
-        //Load url in webview
-        //webView.loadUrl(url);
-
-
-    }
+       webView.getSettings().setJavaScriptEnabled(true);
 
 
 
-    // Open previous opened link from history on webview when back button pressed
-   /* @SuppressWarnings("deprecation")
-    public static void ClearCookies(Context context)
-    {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP_MR1) {
-            //Log.d(C.TAG, "Using ClearCookies code for API >=" + String.valueOf(Build.VERSION_CODES.LOLLIPOP_MR1));
-            CookieManager.getInstance().removeAllCookies(null);
-            CookieManager.getInstance().flush();
-        } else
-        {
-           // Log.d(C.TAG, "Using ClearCookies code for API <" + String.valueOf(Build.VERSION_CODES.LOLLIPOP_MR1));
-            CookieSyncManager cookieSyncMngr=CookieSyncManager.createInstance(context);
-            cookieSyncMngr.startSync();
-            CookieManager cookieManager=CookieManager.getInstance();
-            cookieManager.removeAllCookie();
-            cookieManager.removeSessionCookie();
-            cookieSyncMngr.stopSync();
-            cookieSyncMngr.sync();
-        }*/
-    //}
-    public static void clearWebViewAbsolutely(WebView webView){
-        webView.clearCache(true);
-        webView.clearHistory();
-        webView.clearView();
-        webView.clearSslPreferences();
-        webView.clearDisappearingChildren();
-        webView.clearFocus();
-        webView.clearFormData();
-        webView.clearMatches();
-    }
-
-    @Override
     // Detect when the back button is pressed
-    public void onBackPressed() {
-        if(webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            // Let the system handle the back button
-            super.onBackPressed();
-        }
-    }
 
-}
+
+}}

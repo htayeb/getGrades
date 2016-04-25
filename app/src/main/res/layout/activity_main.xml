@@ -36,9 +36,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
-        android:text="Login" />
+        android:text="@string/login"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:background="#5EBCB3"
+        android:textColor="#ffffff"
+        android:layout_alignParentTop="false"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:textStyle="bold"
+        />
 
     <TextView
         android:id="@+id/textView1"

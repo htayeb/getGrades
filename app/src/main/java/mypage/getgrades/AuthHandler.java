@@ -1,23 +1,15 @@
 package mypage.getgrades;
 import java.io.IOException;
-import java.net.Proxy;
-import java.util.Iterator;
-import java.util.Map;
 
-import android.app.ProgressDialog;
-import android.content.Intent;
+
 import android.os.AsyncTask;
 import android.util.Log;
-import android.webkit.WebView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
+
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.FormElement;
-import org.jsoup.select.Elements;
+
 
 
 public class AuthHandler extends AsyncTask<String, Void, String> {
@@ -59,7 +51,7 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
 
 
             //Https Post with username, password, LT value, execution value,event ID and login cookies
-            doc = Jsoup.connect(URL2)
+            doc = Jsoup.connect(URL)
                     .data("username", userName)
                     .data("password", passWord)
                     .data("lt", ltValue)
@@ -98,11 +90,11 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
             }
                 //Log.v(mWelcomeMessage, doc.toString());
 
-            else if (statusCode == 200)
-            {
-                Log.v("WOW", loginForm.statusMessage());
-                result = "serverError";
-            }
+            //else if (statusCode == 200)
+            //{
+                //Log.v("WOW", loginForm.statusMessage());
+              //  result = "serverError";
+            //}
             else
             {
                 Log.v("MOOOOOOO", doc.toString());

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">getGrades</string>
     <string name="network_unavailable_message">Network is unavailable!</string>
+    <string name="login">Login</string>
 </resources>
