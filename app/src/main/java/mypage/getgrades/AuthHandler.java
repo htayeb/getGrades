@@ -19,8 +19,6 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
     String passWord;
     //UVic login page
     String URL = "https://www.uvic.ca/cas/login?service=https%3a//www.uvic.ca/BAN2P/banuvic.gzcaslib.P_Service_Ticket%3ftarget=bwskogrd.P_ViewTermGrde";
-    String URL2 = "https://www.uvic.ca/BAN2P/bwskogrd.P_ViewTermGrde";
-
 
 
     public AuthHandler(String userName, String passWord)
@@ -68,48 +66,25 @@ public class AuthHandler extends AsyncTask<String, Void, String> {
 
             if (mWelcomeMessage.equals("Term Grades"))
             {
-            //if (mWelcomeMessage.length() >0)
-                //goToGradesActivity();
+
                 Log.v(mWelcomeMessage, doc.toString());
-                //result = "proceed";
-                //Document myDoc = loginForm.parse();
 
-
-                //Element table = doc.select("table[class=datadisplaytable tablesorter]").first();
-
-                //Iterator<Element> ite = table.select("td[class=default]").iterator();
-
-                //String mConfirm = doc.select("table[id=grades-table]").html();
-                //String mConfirm = doc.select("th.ddheader").html();
-                //mConfirm = table.size();
-
-                //Log.v("The mconfim", mConfirm);
-                //Log.v("String3", doc.toString());
                 result = "proceed";
-                //return doc
-            }
-                //Log.v(mWelcomeMessage, doc.toString());
 
-            //else if (statusCode == 200)
-            //{
-                //Log.v("WOW", loginForm.statusMessage());
-              //  result = "serverError";
-            //}
+            }
+
             else
             {
                 Log.v("MOOOOOOO", doc.toString());
                 result = "error";
             }
 
-            //return "MOO";
-            //Toast.makeText("Wrong Credentials", Toast.LENGTH_SHORT).show();
 
         } catch (IOException e)
         {
             e.printStackTrace();
         }
-       //if(mWelcomeMessage.equals("Term Grades")){return "DONE";}
-        //else Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
+
         return result;
     }
 }

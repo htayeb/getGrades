@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="android:Theme.Material.Light.NoActionBar">
+        <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:statusBarColor">#5ebcb3</item>
+    </style>
+</resources>

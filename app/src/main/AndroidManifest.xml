@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".Grades">
         </activity>
+        <activity android:name=".GradesFormatter">
+        </activity>
     </application>
 
 </manifest>
