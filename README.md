@@ -2,7 +2,7 @@
 An Android app to retrieve UVic grades
 
 
-# Feautres to add:
+# Features to add:
 
   1-Add a choice to change which semster grades to get
   2-Add a refresh button
