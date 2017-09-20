@@ -1,9 +1,8 @@
-# getGrades
+![Logo](https://github.com/htayeb/getGrades/blob/master/app/src/main/res/drawable-xhdpi/logo.png)
+# .getGrades
 An Android app to retrieve UVic grades<br />
-# Screenshot
-![Screenshot1](https://github.com/htayeb/getGrades/blob/master/Screenshot_1.png)
+# Screenshots
 <img src="https://github.com/htayeb/getGrades/blob/master/Screenshot_1.png" width="250">
-![Screenshot2](https://github.com/htayeb/getGrades/blob/master/Screenshot_2.png)
 <img src="https://github.com/htayeb/getGrades/blob/master/Screenshot_2.png" width="250">
 # Links
 
