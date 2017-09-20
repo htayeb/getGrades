@@ -1,12 +1,17 @@
 # getGrades
 An Android app to retrieve UVic grades<br />
+# Screenshot
+![Screenshot1](https://github.com/htayeb/getWeather/blob/firstBranch/images/githubLogo.png)
+# Links
 
+[Android Play Store](https://play.google.com/store/apps/details?id=mypage.getgrades&hl=en) <br>
+[Issue tracker]<br>
 
-# Features to add:
+# Credits
 
-  1-Add a choice to change which semster grades to get<br />
-  2-Add a refresh button<br />
-  3-Add course name + Letter grade -------> Find a way to better read the results from webview<br />
+This software uses code from several open source packages.<br>
+
+[Jsoup](https://github.com/jhy/jsoup) <br>
 
 # Licenses
 
