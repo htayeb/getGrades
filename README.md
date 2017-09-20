@@ -4,6 +4,7 @@ An Android app to retrieve UVic grades<br />
 # Screenshots
 <img src="https://github.com/htayeb/getGrades/blob/master/Screenshot_1.png" width="250">
 <img src="https://github.com/htayeb/getGrades/blob/master/Screenshot_2.png" width="250">
+
 # Links
 
 [Android Play Store](https://play.google.com/store/apps/details?id=mypage.getgrades&hl=en) <br>
