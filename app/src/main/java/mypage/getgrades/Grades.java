@@ -89,8 +89,8 @@ public class Grades extends Activity {
 
                                 "document.getElementById('username').value = '" + userName + "';" +
                                 "document.getElementById('password').value = '" + passWord + "';" +
-                                "document.getElementById('workstationType').click();" +
-                                "document.getElementsByName('submit')[1].click();" +
+//                                "document.getElementById('workstationType').click();" +
+                                "document.getElementsByName('form-submit')[0].click();" +
                                 "};");
                         SystemClock.sleep(1000);
                         webView.setVisibility(View.INVISIBLE);
