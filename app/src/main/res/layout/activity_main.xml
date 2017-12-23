@@ -3,11 +3,14 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:elevation="10dp"
                 android:paddingBottom="@dimen/activity_vertical_margin"
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 tools:context="mypage.getgrades.MainActivity">
+
 
     <EditText
         android:id="@+id/editText1"
@@ -16,8 +19,9 @@
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         android:ems="10"
-        android:hint="NetLink ID"
-        android:inputType="textNoSuggestions|text">
+        android:hint="@string/netlink_id"
+        android:inputType="textNoSuggestions|text"
+        android:theme="@style/Base.Widget.AppCompat.ListPopupWindow">
 
         <requestFocus/>
     </EditText>
@@ -29,31 +33,17 @@
         android:layout_below="@+id/editText1"
         android:layout_centerHorizontal="true"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword">
     </EditText>
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="false"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="22dp"
-        android:background="#5EBCB3"
-        android:clickable="true"
-        android:text="@string/login"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"/>
+
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_marginTop="36dp"
@@ -74,6 +64,44 @@
         android:layout_marginBottom="98dp"
         android:baselineAlignBottom="false"
         android:src="@mipmap/logo"
-        />
+        android:contentDescription="@string/todo"/>
 
+    <your.package.here.LoadingButton
+        android:id="@+id/btn_morph"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="Click!" />
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <io.rmiri.buttonloading.ButtonLoading
+            android:id="@+id/btnDown"
+            android:layout_width="match_parent"
+
+            android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="66dp"
+
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/download"
+            android:textColor="#ffffff"
+            app:BL_backgroundColor="#80ffffff"
+            app:BL_circleColor="#5ebcb3"
+            app:BL_circleColorSecond="#8000AFEF"
+            app:BL_enable="true"
+            app:BL_stateShow="normal"
+            app:BL_text="Login"
+            app:BL_textColor="#FFFFFF"
+            app:BL_textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </RelativeLayout>
 </RelativeLayout>
