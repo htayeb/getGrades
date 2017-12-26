@@ -22,8 +22,6 @@ import java.util.regex.Pattern;
 public class Grades extends Activity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-    //private Button button;
-
     private WebView webView;
     String mUrl = "https://www.uvic.ca/cas/login?service=https%3a//www.uvic.ca/BAN2P/banuvic.gzcaslib.P_Service_Ticket%3ftarget=bwskogrd.P_ViewTermGrde";
 

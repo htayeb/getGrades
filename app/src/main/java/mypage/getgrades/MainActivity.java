@@ -48,7 +48,6 @@ public class MainActivity extends android.app.Activity {
     }
 
 
-
     private void authenticate() {
         //call setProgress(false) after 5 second
         final ActionProcessButton btnSignIn = (ActionProcessButton) findViewById(R.id.btnSignIn);
@@ -75,7 +74,6 @@ public class MainActivity extends android.app.Activity {
                 //outputText.append(result + "\n");
                 if (result.contains("proceed"))
                 {
-
                     goToGradesActivity(userName, passWord);
                 }
                 else if(result.contains("error"))

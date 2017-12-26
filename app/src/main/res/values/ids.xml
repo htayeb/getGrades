@@ -3,4 +3,5 @@
     <item name="action_settings" type="id" />
     <item name="webView" type="id"/>
     <item name="output" type="id"/>
+    <item name="swipeContainer" type="id"/>
 </resources>

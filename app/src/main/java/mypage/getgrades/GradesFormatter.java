@@ -4,6 +4,7 @@ package mypage.getgrades;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.widget.ListView;
 import java.util.ArrayList;
 
@@ -24,6 +25,7 @@ public class GradesFormatter extends Activity{
      super.onCreate(savedInstanceState);
      setContentView(R.layout.activity_list);
 
+
      ArrayList<String> courseList=getIntent().getExtras().getStringArrayList("courseList");
      ArrayList<String> gradeList=getIntent().getExtras().getStringArrayList("gradeList");
 
@@ -32,6 +34,8 @@ public class GradesFormatter extends Activity{
      CustomListAdapter whatever = new CustomListAdapter(this, courseList, gradeList);
      listView = (ListView) findViewById(R.id.listView);
      listView.setAdapter(whatever);
+     super.onCreate(savedInstanceState);
+
 
  }
 
@@ -40,6 +44,7 @@ public class GradesFormatter extends Activity{
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        }
+    }
+
 
 }

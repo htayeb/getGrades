@@ -26,8 +26,6 @@ public class CustomListAdapter extends ArrayAdapter {
     private ArrayList<String> gradeMatches;
 
 
-
-
     public CustomListAdapter(Activity context, ArrayList<String> courseMatches, ArrayList<String> gradeMatches) {
 
         super(context, R.layout.listview_row, courseMatches);
@@ -44,7 +42,6 @@ public class CustomListAdapter extends ArrayAdapter {
 
         int[] color_arr={Color.parseColor("#5ebcb3"),Color.parseColor("#93E5AB"),Color.parseColor("#4E878C"),Color.parseColor("#5DB2D4"),};
         rowView.setBackgroundColor(color_arr[position]);// this set background color
-//        Color.parseColor("#5db2d4")
 
         //this code gets references to objects in the listview_row.xml file
         TextView courseTextField = (TextView) rowView.findViewById(R.id.textView5);
