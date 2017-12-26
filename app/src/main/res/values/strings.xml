@@ -6,4 +6,8 @@
     <string name="password">Password</string>
     <string name="todo">TODO</string>
     <string name="download">Download</string>
+    <string name="Sign_in">signin</string>
+    <string name="Success">suc</string>
+    <string name="Loading">loading</string>
+    <string name="sign_in">Sign in</string>
 </resources>

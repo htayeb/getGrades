@@ -1,68 +1,42 @@
 package mypage.getgrades;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.dd.processbutton.iml.ActionProcessButton;
 import java.util.concurrent.ExecutionException;
 
-import io.rmiri.buttonloading.ButtonLoading;
-
-public class MainActivity extends android.app.Activity
-{
+public class MainActivity extends android.app.Activity {
     public static final String TAG = MainActivity.class.getSimpleName();
     TextView outputText;
-//    Button sendData;
     EditText edtUser, edtPass;
     String URL = "https://www.uvic.ca/cas/login?service=https%3A%2F%2Fwww.uvic.ca%2F";
-    ButtonLoading buttonLoading;
+   
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         outputText = (TextView) findViewById(R.id.textView1);
-//        sendData = (Button) findViewById(R.id.button1);
         edtUser = (EditText) findViewById(R.id.editText1);
         edtPass = (EditText) findViewById(R.id.editText2);
-        buttonLoading = (ButtonLoading) findViewById(R.id.btnDown);
-
-        buttonLoading.setOnButtonLoadingListener(new ButtonLoading.OnButtonLoadingListener() {
+        final ActionProcessButton btnSignIn = (ActionProcessButton) findViewById(R.id.btnSignIn);
+        btnSignIn.setMode(ActionProcessButton.Mode.PROGRESS);
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick() {
-                buttonLoading.setProgress(true);
-
+            public void onClick(View v) {
+                btnSignIn.setMode(ActionProcessButton.Mode.ENDLESS);
+                btnSignIn.setProgress(1);
                 authenticate();
             }
-
-            @Override
-            public void onStart() {
-
-            }
-
-
-
-
-            @Override
-            public void onFinish() {
-
-            }
         });
-
-
     }
-
 
 
     private void goToGradesActivity(String userName, String passWord)
@@ -77,6 +51,7 @@ public class MainActivity extends android.app.Activity
 
     private void authenticate() {
         //call setProgress(false) after 5 second
+        final ActionProcessButton btnSignIn = (ActionProcessButton) findViewById(R.id.btnSignIn);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -117,8 +92,8 @@ public class MainActivity extends android.app.Activity
                     //outputText.append(result + "\n");
                 }
                 Log.v(TAG, String.valueOf(result));
-                buttonLoading.setProgress(false);
+                btnSignIn.setProgress(0);
+
             }
         }, 2000);
-    }
-}
+    }}

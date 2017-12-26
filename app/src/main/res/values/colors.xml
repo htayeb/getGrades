@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="holo_blue_bright">#5DB2D4</color>
+    <color name="holo_green_light">#93E5AB</color>
+    <color name="holo_orange_light">#4E878C</color>
+    <color name="holo_red_light">#93E5AB</color>
 </resources>
